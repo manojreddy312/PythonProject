@@ -6,7 +6,7 @@ import pandas as pd
 
 # loading the saved models
 
-diabetes_model = pickle.load(open('heart_disease_model.sav','rb'))
+diabetes_model = pickle.load(open('DiabP_model.sav','rb'))
 
 heart_disease_model = pickle.load(open('heart_disease_model.sav','rb'))
 
@@ -16,26 +16,40 @@ heart_disease_model = pickle.load(open('heart_disease_model.sav','rb'))
 with st.sidebar:
     selected = option_menu('Multiple Disease Prediction System',
     ['Diabetes Prediction','Heart Disease Prediction'],
-    icons = ['heart','activity'],
-    default_index=1)
+    icons = ['gender-female','activity'],
+    default_index=0)
 
 if(selected == 'Heart Disease Prediction'):
     st.title('Heart Disease Prediction using ML')
-    
+    col1, col2, col3 = st.columns(3)
 
-    age = st.number_input(label='Enter Age',format='%i',step=1)
-    sex = st.number_input('Enter sex',format='%i',step=1)
-    cp = st.number_input('Enter chest pain value',format='%i',step=1)
-    trestbps = st.number_input('Enter trestbps',format='%i',step=1)
-    chol = st.number_input('Enter chol',format='%i',step=1)
-    fbs = st.number_input('Enter fbs',format='%i',step=1)
-    restecg = st.number_input('Enter restecg',format='%i',step=1)
-    thalach = st.number_input('Enter thalach',format='%i',step=1)
-    exang = st.number_input('Enter exang',format='%i',step=1)
-    oldpeak = st.number_input('Enter oldpeak',format='%f')
-    slope = st.number_input('Enter slope',format='%i',step=1)
-    ca = st.number_input('Enter ca',format='%i',step=1)
-    thal = st.number_input('Enter thal',format='%i',step=1)
+    with col1:
+        age = st.number_input(label='Age',format='%i',step=1)
+    with col2:
+        sex = st.number_input('Sex',format='%i',step=1)
+    with col3:
+        cp = st.number_input('Chest Pain value',format='%i',step=1)
+    with col1:
+        trestbps = st.number_input('Resting BloodPressure',format='%i',step=1)
+    with col2:
+        chol = st.number_input('Serum Cholestoral in mg/dl',format='%i',step=1)
+    with col3:
+        fbs = st.number_input('Fasting Blood Sugar',format='%i',step=1)
+    with col1:
+        restecg = st.number_input('Resting ECG results',format='%i',step=1)
+    with col2:
+        thalach = st.number_input('Max Heart Rate achieved',format='%i',step=1)
+    with col3:
+        exang = st.number_input('Exercise induced Angina',format='%i',step=1)
+    with col1:
+        oldpeak = st.number_input('ST depression induced by exercise ',format='%f')
+    with col2:
+        slope = st.number_input('Slope of peak exercise ST segment',format='%i',step=1)
+    with col3:
+        ca = st.number_input('Major vessels colored by flourosopy',format='%i',step=1)
+    with col1:
+        thal = st.number_input('Thal value',format='%i',step=1)
+
     heart_status = ''
 
     #creating a button for prediction
@@ -50,3 +64,40 @@ if(selected == 'Heart Disease Prediction'):
             heart_status = 'Person has Heart Disease'
 
         st.success(heart_status)
+
+elif(selected == 'Diabetes Prediction'):
+    st.title('Diabetes Prediction using ML')
+    
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        Pregnancies = st.number_input(label='Pregnancy Count',format='%i',step=1)
+    with col2:
+        Glucose = st.number_input('Glucose Level',format='%i',step=1)
+    with col3:
+        BloodPressure = st.number_input('BloodPressure value',format='%i',step=1)
+    with col1:
+        SkinThickness = st.number_input('SkinThickness value',format='%i',step=1)
+    with col2:
+        Insulin = st.number_input('Insulin Level',format='%i',step=1)
+    with col3:
+        BMI = st.number_input('BMI value',format='%i',step=1)
+    with col1:
+        DiabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function',format='%i',step=1)
+    with col2:
+        Age = st.number_input('Age of the Person',format='%i',step=1)
+    
+    diab_status = ''
+
+    #creating a button for prediction
+
+    if st.button('Diabetic test result'):
+        diab_pred = diabetes_model.predict([[Pregnancies,Glucose,BloodPressure,SkinThickness,
+        Insulin,BMI,DiabetesPedigreeFunction,Age]])
+
+        if(diab_pred[0]==0):
+            diab_status = 'Person is not Diabetic'
+        else:
+            diab_status = 'Person is Diabetic'
+
+        st.success(diab_status)
