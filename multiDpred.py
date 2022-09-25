@@ -65,8 +65,8 @@ if(selected == 'Heart Disease Prediction'):
 
         st.success(heart_status)
 
-elif(selected == 'Diabetes Prediction Using ML'):
-    st.title('Diabetes Prediction using ML')
+elif(selected == 'Diabetes Prediction'):
+    st.title('Diabetes Prediction Using ML')
     
     col1, col2, col3 = st.columns(3)
 
