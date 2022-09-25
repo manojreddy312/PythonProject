@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
 import sys
 sys.path.insert(1,"C:/Users/Manoj Reddy/Lib/site-packages/streamlit_option_menu")
-from streamlit_option_menu import option_menu
+from "streamlit_option_menu" import option_menu
 import numpy as np
 import pandas as pd
 
