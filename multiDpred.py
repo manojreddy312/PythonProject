@@ -15,12 +15,12 @@ heart_disease_model = pickle.load(open('heart_disease_model.sav','rb'))
 
 with st.sidebar:
     selected = option_menu('Multiple Disease Prediction System',
-    ['Diabetes Prediction','Heart Disease Prediction'],
+    ['Gestational Diabetes Prediction','Heart Disease Prediction'],
     icons = ['gender-female','activity'],
     default_index=0)
 
 if(selected == 'Heart Disease Prediction'):
-    st.title('Heart Disease Prediction Using ML')
+    st.title('Heart Disease Prediction using ML')
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -65,8 +65,8 @@ if(selected == 'Heart Disease Prediction'):
 
         st.success(heart_status)
 
-elif(selected == 'Diabetes Prediction'):
-    st.title('Diabetes Prediction Using ML')
+elif(selected == 'Gestational Diabetes Prediction'):
+    st.title('Gestational Diabetes Prediction using ML')
     
     col1, col2, col3 = st.columns(3)
 
