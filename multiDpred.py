@@ -20,7 +20,7 @@ with st.sidebar:
     default_index=0)
 
 if(selected == 'Heart Disease Prediction'):
-    st.title('Heart Disease Prediction using ML')
+    st.title('Heart Disease Prediction Using ML')
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -65,7 +65,7 @@ if(selected == 'Heart Disease Prediction'):
 
         st.success(heart_status)
 
-elif(selected == 'Diabetes Prediction'):
+elif(selected == 'Diabetes Prediction Using ML'):
     st.title('Diabetes Prediction using ML')
     
     col1, col2, col3 = st.columns(3)
