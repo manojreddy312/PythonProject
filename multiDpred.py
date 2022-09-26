@@ -5,6 +5,16 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import pandas as pd
 
+
+hide_st_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visbility: hidden;}
+        header {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # loading the saved models
 
 diabetes_model = pickle.load(open('DiabP_model.sav','rb'))
